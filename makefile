@@ -1,16 +1,17 @@
-
 CC:=gcc
 CXX:=g++
 
 SRC=$(wildcard *.cpp)
 
 DEPS=
-LIBS=stdc++fs
+LIBS+= stdc++fs 
+#LIBS+= sqlite3 curses tvision
 
-CXXFLAGS+=-O2 -Wall -std=c++17
+CXXFLAGS+=-O2 -Wall -std=c++17 -g
 # -I./ $(shell pkg-config $(DEPS) --cflags)
 
-LDFLAGS:=$(shell pkg-config $(DEPS) --libs) $(-l$(LIBS))
+# LDFLAGS+= $(shell pkg-config $(DEPS) --libs)
+LDFLAGS+= $(addprefix -l,$(LIBS))
 
 OBJ=$(SRC:%.cpp=%.o)
 
@@ -22,10 +23,8 @@ all: $(EXEC)
 	$(CXX) -c -o $@ $< $(CXXFLAGS)
 
 $(EXEC): $(OBJ)
- 	$(CXX) -o $@ $^ $(CXXFLAGS) $(LDFLAGS)
+	$(CXX) -o $@ $^ $(CXXFLAGS) $(LDFLAGS)
 
 clean:
 	rm -f $(OBJ) $(EXEC)
 
-
-#g++ ./backuper.cpp -std=c++17 -lstdc++fs
