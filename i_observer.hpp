@@ -1,5 +1,6 @@
-#ifndef V_iObserver
-#define V_iObserver
+#ifndef I_OBSERVER
+#define I_OBSERVER
+
 #include <thread>
 #include <mutex>
 #include <memory>
@@ -7,7 +8,9 @@
 #include <iostream>
 #include <vector>
 #include <stack>
-namespace nsObserver{
+
+namespace nsObserver
+{
 //-------------------------- iObserver ------------------------------------------
 /**
  * @brief наблюдатель. Объекты делать в виде std::shared_ptr!!!
@@ -83,4 +86,4 @@ protected:
 
 };
 };
-#endif /* V_iObserver */
+#endif /* I_OBSERVER */
